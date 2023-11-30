@@ -15,16 +15,14 @@ import ru.evteev.la2.R;
 import ru.evteev.sportapp.database.DatabaseDescription.Sport;
 
 public class SportContentProvider extends ContentProvider {
-
     private DatabaseHelper dbHelper;
-    private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-
     private static final int ONE_SPORT = 1;
+    private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private static final int SPORTS = 2;
 
     static {
-        uriMatcher.addURI(DatabaseDescription.AUTHORITY, Sport.COLUMN_NAME + "/#", ONE_SPORT);
-        uriMatcher.addURI(DatabaseDescription.AUTHORITY, Sport.COLUMN_NAME, SPORTS);
+        uriMatcher.addURI(DatabaseDescription.AUTHORITY, Sport.TABLE_NAME + "/#", ONE_SPORT);
+        uriMatcher.addURI(DatabaseDescription.AUTHORITY, Sport.TABLE_NAME, SPORTS);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class SportContentProvider extends ContentProvider {
 
                 break;
             default:
-                throw new UnsupportedOperationException(getContext().getString(R.string.invalid_query_uri) + uri);
+                throw new UnsupportedOperationException(getContext().getString(R.string.invalid_query_uri) + " " + uri);
         }
 
         Cursor cursor = queryBuilder.query(dbHelper.getReadableDatabase(), projection, selection, selectionArgs, null, null, sortOrder);

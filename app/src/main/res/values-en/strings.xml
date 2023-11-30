@@ -10,4 +10,5 @@
     <string name="invalid_insert_uri">Invalud insert URL</string>
     <string name="invalid_delete_uri">Invalid delete URL</string>
     <string name="invalid_update_uri">Invalid update URL</string>
+    <string name="sport_deleted">Element was deleted</string>
 </resources>

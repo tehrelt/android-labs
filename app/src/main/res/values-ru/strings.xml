@@ -10,4 +10,5 @@
     <string name="invalid_insert_uri">Неверная ссылка для вставки</string>
     <string name="invalid_delete_uri">Неверная ссылка для удаления</string>
     <string name="invalid_update_uri">Неверная ссылка для обновления</string>
+    <string name="sport_deleted">Элемент удалён</string>
 </resources>
