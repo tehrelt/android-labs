@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LW2</string>
+    <string name="label_add_button">Add</string>
+    <string name="label_enter_a_sport">Enter a sport</string>
+    <string name="label_list_of_sports">List of sport activities</string>
+    <string name="label_added_new_item">Added a new item</string>
+    <string name="invalid_query_uri">Invalid query URL</string>
+    <string name="insert_failed">Insert failed</string>
+    <string name="invalid_insert_uri">Invalud insert URL</string>
+    <string name="invalid_delete_uri">Invalid delete URL</string>
+    <string name="invalid_update_uri">Invalid update URL</string>
+</resources>

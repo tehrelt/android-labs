@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">APP_NAME_LW2</string>
+    <string name="label_add_button">ADD_BUTTON</string>
+    <string name="label_enter_a_sport">LABEL_ENTER A SPORT</string>
+    <string name="label_list_of_sports">LABEL_LIST_OF_SPORTS</string>
+    <string name="label_added_new_item">LABEL_ADDED_NEW_ITEM</string>
+    <string name="invalid_query_uri">invalid_query_uri</string>
+    <string name="insert_failed">insert_failed</string>
+    <string name="invalid_insert_uri">invalid_insert_uri</string>
+    <string name="invalid_delete_uri">invalid_delete_uri</string>
+    <string name="invalid_update_uri">invalid_update_uri</string>
+</resources>

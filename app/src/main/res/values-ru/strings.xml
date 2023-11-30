@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ЛР2</string>
+    <string name="label_add_button">Добавить</string>
+    <string name="label_enter_a_sport">Введите вид спорта</string>
+    <string name="label_list_of_sports">Список видов спортов</string>
+    <string name="label_added_new_item">Добавлен новый элемент</string>
+    <string name="invalid_query_uri">Неверный запрос</string>
+    <string name="insert_failed">Вставка неудалась</string>
+    <string name="invalid_insert_uri">Неверная ссылка для вставки</string>
+    <string name="invalid_delete_uri">Неверная ссылка для удаления</string>
+    <string name="invalid_update_uri">Неверная ссылка для обновления</string>
+</resources>
