@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "ru.evteev.la2"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ru.evteev.la2"
