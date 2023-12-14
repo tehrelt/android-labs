@@ -8,22 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import ru.evteev.la2.R
+import ru.evteev.sportapp.domain.Sport
+import ru.evteev.sportapp.viewmodels.SportsListViewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SportListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SportListFragment : Fragment(R.layout.fragment_sport_list) {
     interface Callback {
         fun onSportSelected(sportId: Int);
+
     }
 
-    private lateinit var arrayList: ArrayList<Sport>
-    private lateinit var adapter: ArrayAdapter<Sport>
-
-
+    private lateinit var viewModel: SportsListViewModel;
     private var callback: Callback? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +33,14 @@ class SportListFragment : Fragment(R.layout.fragment_sport_list) {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sport_list, container, false);
-        val list = view.findViewById<ListView>(R.id.list_view)
-        arrayList = ArrayList();
-        adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, arrayList);
-        list.adapter = adapter
+        viewModel = SportsListViewModel(requireActivity().application)
+        val lv = view.findViewById<ListView>(R.id.list_view);
+        viewModel.getSports().observe(viewLifecycleOwner, Observer<List<Sport>> { sportsList ->
+            run {
+                val adapter = ArrayAdapter<Sport>(requireContext(), android.R.layout.simple_list_item_1, sportsList)
+                lv.adapter = adapter;
+            }
+        })
         return view;
     }
 
