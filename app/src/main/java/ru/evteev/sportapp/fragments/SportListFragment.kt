@@ -1,10 +1,12 @@
 package ru.evteev.sportapp.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import ru.evteev.la2.R
 
 /**
@@ -14,26 +16,30 @@ import ru.evteev.la2.R
  */
 class SportListFragment : Fragment(R.layout.fragment_sport_list) {
 
+    interface Callback {
+        fun onSportSelected(sportId: Int);
+    }
+
+    private var callback: Callback? = null;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callback = context as Callback?
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        callback = null;
+    }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SportListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SportListFragment().apply {
-
-            }
+        fun newInstance(): SportListFragment {
+            return SportListFragment();
+        }
     }
 }
