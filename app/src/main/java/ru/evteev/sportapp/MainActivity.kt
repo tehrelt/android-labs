@@ -19,12 +19,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ru.evteev.la2.R
 import ru.evteev.sportapp.database.DatabaseDescription
 import ru.evteev.sportapp.domain.Sport
+import ru.evteev.sportapp.fragments.SportFragment
 import ru.evteev.sportapp.fragments.SportListFragment
 
 
 class MainActivity : AppCompatActivity(), SportListFragment.Callback {
-    private lateinit var arrayList: ArrayList<Sport>
-    private lateinit var adapter: ArrayAdapter<Sport>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,15 +35,9 @@ class MainActivity : AppCompatActivity(), SportListFragment.Callback {
             .addToBackStack(null)
             .commit();
 
-//
-//        arrayList = ArrayList()
-//        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList)
-//
+
 //        val addButton = findViewById<FloatingActionButton>(R.id.add_button)
 //        val refreshButton = findViewById<FloatingActionButton>(R.id.refresh_button)
-//        val list = findViewById<ListView>(R.id.list_view)
-//
-//        list.adapter = adapter
 //
 //        val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 //            run {
@@ -110,7 +103,11 @@ class MainActivity : AppCompatActivity(), SportListFragment.Callback {
     }
 
     public override fun onSportSelected(sportId: Int) {
-
+        val fragment = SportFragment.newInstance(sportId);
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flMain, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun sendNotification(text: String) {
