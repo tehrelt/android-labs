@@ -14,9 +14,9 @@ import java.util.UUID
 
 @Dao
 interface SportDAO {
-    @Query("SELECT * FROM sport")
+    @Query("SELECT * FROM sports")
     fun getSports() : LiveData<List<Sport>>
-    @Query("SELECT * FROM sport WHERE id = (:id)")
+    @Query("SELECT * FROM sports WHERE id = (:id)")
     fun getSport(id: UUID) : LiveData<Sport>
     @Update()
     fun updateSport(sport: Sport);
@@ -43,7 +43,8 @@ abstract class SportDatabase : RoomDatabase(){
                     context.applicationContext,
                     SportDatabase::class.java,
                     "sport_db"
-                ).build();
+                ).fallbackToDestructiveMigration()
+                    .build();
 
                 INSTANCE = inst;
                 return inst;
