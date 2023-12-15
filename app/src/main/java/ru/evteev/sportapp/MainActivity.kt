@@ -11,13 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleOwner
 import ru.evteev.la2.R
+import ru.evteev.sportapp.fragments.SportCreateFragment
 import ru.evteev.sportapp.fragments.SportFragment
 import ru.evteev.sportapp.fragments.SportListFragment
 import ru.evteev.sportapp.repository.SportRepository
 import ru.evteev.sportapp.viewmodels.SportsListViewModel
 
 
-class MainActivity : AppCompatActivity(), SportListFragment.Callback, LifecycleOwner {
+class MainActivity : AppCompatActivity(), SportListFragment.Callback, LifecycleOwner, SportCreateFragment.CreateCallback {
 
     private lateinit var viewModel: SportsListViewModel;
 
@@ -32,9 +33,9 @@ class MainActivity : AppCompatActivity(), SportListFragment.Callback, LifecycleO
             .replace(R.id.flMain, SportListFragment(), "Sport list frag")
             .addToBackStack(null)
             .commit();
-
-
     }
+
+
 
     override fun onStart() {
         super.onStart()
@@ -72,5 +73,12 @@ class MainActivity : AppCompatActivity(), SportListFragment.Callback, LifecycleO
             .setAutoCancel(true)
 
         manager.notify(1, notificationBuilder.build())
+    }
+
+    override fun createSport(name: String) {
+        viewModel.insert(name);
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flMain, SportListFragment(), null)
+            .commit()
     }
 }

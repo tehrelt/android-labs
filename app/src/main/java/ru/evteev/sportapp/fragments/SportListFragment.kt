@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ru.evteev.la2.R
 import ru.evteev.sportapp.domain.Sport
 import ru.evteev.sportapp.viewmodels.SportsListViewModel
@@ -35,12 +36,22 @@ class SportListFragment : Fragment(R.layout.fragment_sport_list) {
         val view = inflater.inflate(R.layout.fragment_sport_list, container, false);
         viewModel = SportsListViewModel(requireActivity().application)
         val lv = view.findViewById<ListView>(R.id.list_view);
+
         viewModel.getSports().observe(viewLifecycleOwner, Observer<List<Sport>> { sportsList ->
             run {
                 val adapter = ArrayAdapter<Sport>(requireContext(), android.R.layout.simple_list_item_1, sportsList)
                 lv.adapter = adapter;
             }
         })
+        val addButton = view.findViewById<FloatingActionButton>(R.id.add_button)
+
+        addButton.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.flMain, SportCreateFragment())
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+
         return view;
     }
 

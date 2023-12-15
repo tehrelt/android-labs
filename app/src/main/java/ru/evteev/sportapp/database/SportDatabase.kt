@@ -9,6 +9,7 @@ import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.Update
+import androidx.sqlite.db.SupportSQLiteDatabase
 import ru.evteev.sportapp.domain.Sport
 import java.util.UUID
 
@@ -24,7 +25,7 @@ interface SportDAO {
     fun addSport(sport: Sport)
 }
 
-@Database(entities = [Sport::class], version = 1, exportSchema = true)
+@Database(entities = [Sport::class], version = 2, exportSchema = true)
 abstract class SportDatabase : RoomDatabase(){
     abstract fun sportDao() : SportDAO
 
@@ -33,22 +34,23 @@ abstract class SportDatabase : RoomDatabase(){
         private var INSTANCE: SportDatabase? = null;
 
         fun get(context: Context): SportDatabase {
-            val temp = INSTANCE;
-            if(temp != null) {
-                return temp;
+            if(INSTANCE != null) {
+                return INSTANCE as SportDatabase;
             }
-
-            synchronized(this) {
-                val inst = Room.databaseBuilder(
+            INSTANCE = Room.databaseBuilder(
                     context.applicationContext,
                     SportDatabase::class.java,
                     "sport_db"
-                ).fallbackToDestructiveMigration()
-                    .build();
-
-                INSTANCE = inst;
-                return inst;
-            }
+            )
+                .addCallback(object : RoomDatabase.Callback() {
+                    override fun onCreate(db: SupportSQLiteDatabase) {
+                        super.onCreate(db)
+                        println("DB created");
+                    }
+                })
+                .fallbackToDestructiveMigration()
+                .build();
+            return INSTANCE!!;
         }
     }
 }

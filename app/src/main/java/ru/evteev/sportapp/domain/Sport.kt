@@ -7,7 +7,7 @@ import java.util.UUID
 
 @Entity(tableName = "sports")
 data class Sport(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true )
     @ColumnInfo(name = "id")
     val id: Int = 0,
 
