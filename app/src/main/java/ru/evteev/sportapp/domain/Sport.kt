@@ -6,5 +6,11 @@ import androidx.room.PrimaryKey
 import java.util.UUID
 
 @Entity(tableName = "sports")
-data class Sport(@PrimaryKey val id: UUID = UUID.randomUUID(),
-                 @ColumnInfo(name = "name") var name: String = "");
+data class Sport(
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "id")
+    val id: Int = 0,
+
+    @ColumnInfo(name = "name")
+    var name: String = ""
+)

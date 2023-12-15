@@ -9,23 +9,30 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.LifecycleOwner
 import ru.evteev.la2.R
 import ru.evteev.sportapp.fragments.SportFragment
 import ru.evteev.sportapp.fragments.SportListFragment
 import ru.evteev.sportapp.repository.SportRepository
+import ru.evteev.sportapp.viewmodels.SportsListViewModel
 
 
-class MainActivity : AppCompatActivity(), SportListFragment.Callback {
+class MainActivity : AppCompatActivity(), SportListFragment.Callback, LifecycleOwner {
+
+    private lateinit var viewModel: SportsListViewModel;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.activity_main)
+
+        viewModel = SportsListViewModel(application);
 
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.flMain, SportListFragment(), "Sport list frag")
             .addToBackStack(null)
             .commit();
+
 
     }
 

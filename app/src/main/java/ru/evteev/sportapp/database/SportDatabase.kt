@@ -24,7 +24,7 @@ interface SportDAO {
     fun addSport(sport: Sport)
 }
 
-@Database(entities = [Sport::class], version = 1)
+@Database(entities = [Sport::class], version = 1, exportSchema = true)
 abstract class SportDatabase : RoomDatabase(){
     abstract fun sportDao() : SportDAO
 
