@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LW2</string>
+    <string name="app_name">LW4</string>
     <string name="label_add_button">Add</string>
     <string name="label_enter_a_sport">Enter a sport</string>
     <string name="label_list_of_sports">List of sport activities</string>
