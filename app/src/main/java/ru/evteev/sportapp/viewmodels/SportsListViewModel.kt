@@ -17,6 +17,12 @@ class SportsListViewModel(application: Application) : AndroidViewModel(applicati
     fun insert(name: String) {
         repository.insertSport(Sport(0, name));
     }
+    fun update(sport: Sport) {
+        repository.updateSport(sport);
+    }
+    fun delete(id: Int) {
+        repository.deleteSport(id);
+    }
 
     init {
         val dao = SportDatabase.get(application).sportDao();

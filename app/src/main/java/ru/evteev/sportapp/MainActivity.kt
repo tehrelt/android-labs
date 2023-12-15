@@ -14,7 +14,6 @@ import ru.evteev.la2.R
 import ru.evteev.sportapp.fragments.SportCreateFragment
 import ru.evteev.sportapp.fragments.SportFragment
 import ru.evteev.sportapp.fragments.SportListFragment
-import ru.evteev.sportapp.repository.SportRepository
 import ru.evteev.sportapp.viewmodels.SportsListViewModel
 
 

@@ -14,4 +14,5 @@ class SportRepository(private val sportDao: SportDAO) {
     fun getSports(): LiveData<List<Sport>> = sportDao.getSports();
     fun getSport(id: Int): LiveData<Sport> = sportDao.getSport(id);
     fun updateSport(sport: Sport) = sportDao.updateSport(sport);
+    fun deleteSport(id: Int) = sportDao.deleteSport(id);
 }

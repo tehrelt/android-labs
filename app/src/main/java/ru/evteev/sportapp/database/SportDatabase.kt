@@ -22,7 +22,9 @@ interface SportDAO {
     @Update()
      fun updateSport(sport: Sport);
     @Insert()
-     fun addSport(sport: Sport)
+    fun addSport(sport: Sport)
+    @Query("DELETE FROM sports WHERE id = :id")
+    fun deleteSport(id: Int)
 }
 
 @Database(entities = [Sport::class], version = 2, exportSchema = true)
