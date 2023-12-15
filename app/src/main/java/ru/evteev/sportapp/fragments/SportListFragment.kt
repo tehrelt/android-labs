@@ -52,6 +52,16 @@ class SportListFragment : Fragment(R.layout.fragment_sport_list) {
                 ?.commit()
         }
 
+        lv.setOnItemClickListener { _, _, position, _ ->
+            val item = viewModel.getSports().value?.elementAt(position);
+            if (item != null) {
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.flMain, SportFragment.newInstance(item.id))
+                    ?.addToBackStack(null)
+                    ?.commit()
+            };
+        }
+
         return view;
     }
 

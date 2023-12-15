@@ -18,7 +18,7 @@ interface SportDAO {
     @Query("SELECT * FROM sports")
      fun getSports() : LiveData<List<Sport>>
     @Query("SELECT * FROM sports WHERE id = (:id)")
-     fun getSport(id: UUID) : LiveData<Sport>
+     fun getSport(id: Int) : LiveData<Sport>
     @Update()
      fun updateSport(sport: Sport);
     @Insert()

@@ -12,6 +12,6 @@ import java.util.concurrent.Executors
 class SportRepository(private val sportDao: SportDAO) {
     fun insertSport(sport: Sport) = sportDao.addSport(sport);
     fun getSports(): LiveData<List<Sport>> = sportDao.getSports();
-    fun getSport(id: UUID): LiveData<Sport> = sportDao.getSport(id);
+    fun getSport(id: Int): LiveData<Sport> = sportDao.getSport(id);
     fun updateSport(sport: Sport) = sportDao.updateSport(sport);
 }

@@ -12,6 +12,7 @@ class SportsListViewModel(application: Application) : AndroidViewModel(applicati
     private val repository: SportRepository
     private val sports: LiveData<List<Sport>>
 
+    fun getSport(id: Int): LiveData<Sport> = repository.getSport(id)
     fun getSports(): LiveData<List<Sport>> = sports;
     fun insert(name: String) {
         repository.insertSport(Sport(0, name));
