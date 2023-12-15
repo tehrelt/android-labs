@@ -16,13 +16,13 @@ import java.util.UUID
 @Dao
 interface SportDAO {
     @Query("SELECT * FROM sports")
-    fun getSports() : LiveData<List<Sport>>
+     fun getSports() : LiveData<List<Sport>>
     @Query("SELECT * FROM sports WHERE id = (:id)")
-    fun getSport(id: UUID) : LiveData<Sport>
+     fun getSport(id: UUID) : LiveData<Sport>
     @Update()
-    fun updateSport(sport: Sport);
+     fun updateSport(sport: Sport);
     @Insert()
-    fun addSport(sport: Sport)
+     fun addSport(sport: Sport)
 }
 
 @Database(entities = [Sport::class], version = 2, exportSchema = true)
@@ -49,6 +49,7 @@ abstract class SportDatabase : RoomDatabase(){
                     }
                 })
                 .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
                 .build();
             return INSTANCE!!;
         }
