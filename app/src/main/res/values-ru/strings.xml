@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ЛР4</string>
+    <string name="app_name">ЛР5</string>
     <string name="label_add_button">Добавить</string>
     <string name="label_enter_a_sport">Введите вид спорта</string>
     <string name="label_list_of_sports">Список видов спорта</string>

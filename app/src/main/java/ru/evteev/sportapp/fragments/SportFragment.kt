@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -15,6 +16,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ru.evteev.la2.R
 import ru.evteev.sportapp.domain.Sport
+import ru.evteev.sportapp.tasks.SearchTask
 import ru.evteev.sportapp.viewmodels.SportsListViewModel
 import kotlin.properties.Delegates
 
@@ -50,6 +52,10 @@ class SportFragment : Fragment() {
 
                 val updateButton = view.findViewById<FloatingActionButton>(R.id.update_button);
                 val deleteButton = view.findViewById<FloatingActionButton>(R.id.delete_button);
+                val searchButton = view.findViewById<FloatingActionButton>(R.id.search_button);
+
+                val webView = view.findViewById<WebView>(R.id.web_view);
+
 
                 updateButton.setOnClickListener {
                     vm.update(item)
@@ -65,6 +71,14 @@ class SportFragment : Fragment() {
                         .replace(R.id.flMain, SportListFragment())
                         .commit()
                 }
+
+                searchButton.setOnClickListener {
+                    val query: String = item.name;
+
+                    val searchTask = SearchTask(webView)
+                    searchTask.execute(query)
+                }
+
             }
         });
 
